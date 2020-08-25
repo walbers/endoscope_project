@@ -1,4 +1,4 @@
 camera: 
 light: 
-switch: 
+switch: https://www.amazon.com/Gardner-Bender-GSW-18-Heavy-Duty-Electrical/dp/B00004WLKC/ref=sr_1_11?crid=DSX1YKX55MOZ&dchild=1&keywords=on+off+switch&qid=1598379406&sprefix=on+off+s%2Caps%2C242&sr=8-11
 tubing: 
