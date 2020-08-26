@@ -1,1 +1,1 @@
-endoscope project
+virtual checkup project
