@@ -2,3 +2,4 @@ camera: https://www.amazon.com/Webcamera-usb-Illumination-Surveillance-Security/
 light: https://www.adafruit.com/product/4168
 switch: https://www.amazon.com/Gardner-Bender-GSW-18-Heavy-Duty-Electrical/dp/B00004WLKC/ref=sr_1_11?crid=DSX1YKX55MOZ&dchild=1&keywords=on+off+switch&qid=1598379406&sprefix=on+off+s%2Caps%2C242&sr=8-11
 tubing: https://www.adafruit.com/product/4163
+DC to DC boost converter: https://www.ebay.com/i/263030082850?chn=ps&mkevt=1&mkcid=28
