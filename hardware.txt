@@ -4,3 +4,4 @@ switch: https://www.amazon.com/Gardner-Bender-GSW-18-Heavy-Duty-Electrical/dp/B0
 tubing: https://www.adafruit.com/product/4163
 DC to DC boost converter: https://www.amazon.com/Eiechip-Voltage-Regulator-Converter-Module/dp/B07RNBJK5F/ref=sr_1_4?dchild=1&keywords=boost+converter&qid=1600649641&sr=8-4
 We can make one but we need to order parts that take really long and are way more expensive. Will also be a pain to test and run at home. 
+digital potentiometer: https://www.amazon.com/Microchip-Mcp4131-103E-Digital-Potentiometer-129Steps/dp/B011N9ZZM4
