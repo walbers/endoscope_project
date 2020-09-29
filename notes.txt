@@ -1,0 +1,2 @@
+https://www.twilio.com/blog/2018/04/choosing-cameras-javascript-mediadevices-api.html
+https://www.twilio.com/blog/build-a-video-app-javascript-twilio-cli-quickly
