@@ -56,10 +56,10 @@
 	<div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3"></div>
           <div class="col-lg-3 col-md-3 col-sm-3">
-	    <button class="btn btn-outline-secondary btn-lg">Login</button>
+	    <button class="btn btn-outline-secondary btn-lg" onclick="location.href='https://virtualcheckup.walbers.com/login-doctor.php'">Login</button>
 	  </div>
           <div class="col-lg-3 col-md-3 col-sm-3">
-	    <button class="btn btn-outline-secondary btn-lg">Register</button>
+	    <button class="btn btn-outline-secondary btn-lg" onclick="location.href='https://virtualcheckup.walbers.com/register-doctor.php'">Register</button>
 	  </div>
           <div class="col-lg-3 col-md-3 col-sm-3"></div>
         </div>
