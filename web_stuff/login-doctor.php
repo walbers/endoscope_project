@@ -3,8 +3,8 @@
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION["isdoctor"] === true){
+    header("location: welcome-doctor.php");
     exit;
 }
  
@@ -62,9 +62,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $username;
                             $_SESSION["username"] = $username;                            
-                            
+			    $_SESSION["isdoctor"] = true;
+
                             // Redirect user to welcome page
-                            header("location: welcome.php");
+                            header("location: welcome-doctor.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -117,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+            <p>Don't have an account? <a href="register-doctor.php">Sign up now</a>.</p>
         </form>
     </div>    
 </body>
