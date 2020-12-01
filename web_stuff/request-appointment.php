@@ -41,10 +41,9 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-	<th>Username</th>
-        <th>Sign Up</th>
+        <th>Doctor</th>
+	<th>Appointment Date</th>
+	<th>Request Appointment</th>
       </tr>
     </thead>
     <tbody>
@@ -52,24 +51,37 @@
 
     // Get list of registered patients already
     $user = $_SESSION["username"];
-    $sql = "SELECT patient FROM doctor_client WHERE doctor=\"$user\";";
+    $sql = "SELECT doctor FROM doctor_client WHERE patient=\"$user\";";
     $already_registered = [];
     
     if ($result = $conn->query($sql)) {
+      print_r($_POST);
       while ($row = $result->fetch_assoc()) {
-        $already_registered[$row["patient"]] = 1;
+        $doctor = $row["doctor"];
+	  echo '<tr>	
+		  <td>'.$doctor.'</td>
+		  <td>
+		    <form method="post">
+		      <input id="'.$doctor.'" type="datetime-local" name="'.$doctor.'"/>
+		    </form>
+		  </td>
+		  <td>	
+	            <form method="post">
+		      <input type="submit" name="Resquest" class="button" value="'.$doctor.'" />
+		    </form>
+                  </td>
+		</tr>';
+	//echo '<script>
+	//echo '<script>console.log(document.getElementById("'.$doctor'").value);</script>';
+	
       }
       $result->free();
     }
-
+/*
     $query = "SELECT * FROM patients;";
 
     if ($result = $conn->query($query)) {
       while ($row = $result->fetch_assoc()) {
-        $field1name = $row["username"];
-	$field2name = $row["first_name"];
-	$field3name = $row["last_name"];
-	if (isset($already_registered[$field1name])) {
 	  echo '<tr>	
 		  <td>'.$field2name.'</td>
 		  <td>'.$field3name.'</td>
@@ -109,8 +121,8 @@
 	}
       }
       $result->free();
-
-    }
+ */
+   // }
     ?>
     </tbody>
   </table>

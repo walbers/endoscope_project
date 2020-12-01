@@ -12,7 +12,6 @@
 </head>
 
 <body>
-  <script src="index.js"></script>
   <nav class="navbar navbar-expand-md">
   <a class="navbar-brand" href="#">Logo</a>
   <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
