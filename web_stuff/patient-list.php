@@ -38,7 +38,8 @@
 
 <body>
 
-  <h1>Hi 1, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+  <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>! Welcome to our site.</h1>
+  <button>
   <!-- <p>test <?php //echo htmlspecialchars($field1name); ?></p> -->
 
   <table class="table table-striped">
@@ -54,52 +55,67 @@
       <?php 
 
     // Get list of registered patients already
-    $sql = "SELECT patient FROM doctor_client WHERE doctor=?";
+    $user = $_SESSION["username"];
+    $sql = "SELECT patient FROM doctor_client WHERE doctor=\"$user\";";
     $already_registered = [];
     
-    if($stmt = mysqli_prepare($conn, $sql)){
-      mysqli_stmt_bind_param($stmt, "s", $_SESSION["username"]);
-      
-      if($result = mysqli_stmt_execute($stmt)) {
-        while($row = $result->fetch_assoc()) {
-          $already_registered[$row["patient"]] = 1;
-	}
-        $result->free();
+    if ($result = $conn->query($sql)) {
+      while ($row = $result->fetch_assoc()) {
+        $already_registered[$row["patient"]] = 1;
       }
+      $result->free();
     }
- 
 
-    $query = "SELECT * FROM patients";
+    $query = "SELECT * FROM patients;";
 
     if ($result = $conn->query($query)) {
       while ($row = $result->fetch_assoc()) {
         $field1name = $row["username"];
 	$field2name = $row["first_name"];
 	$field3name = $row["last_name"];
-
-        if (isset($already_registered[$field1name])) {
+	if (isset($already_registered[$field1name])) {
 	  echo '<tr>	
 		  <td>'.$field2name.'</td>
 		  <td>'.$field3name.'</td>
 		  <td>'.$field1name.'</td>
 		  <td>Already signed up!</td>
 	      </tr>';
-        } else {
+	} else {
+	  if (isset($_POST["$field1name"])) {
+		  
+            // sql stuff for doctor_client table
+	    $sql2 = "INSERT IGNORE INTO doctor_client VALUES(\"$user\", \"$field1name\");";
+	    if ($result2 = $conn->query($sql2)) {
+	      // disable button	    
+              echo '<tr>	
+		  <td>'.$field2name.'</td>
+		  <td>'.$field3name.'</td>
+		  <td>'.$field1name.'</td>
+		  <td>Already signed up!</td>
+		  </tr>';
+	      header("Location: https://virtualcheckup.walbers.com/patient-list.php");
+	      die();
+	    } else {
+	      echo "oh no";
+	    }
+	  }
+	  
 	  echo '<tr>	
 		  <td>'.$field2name.'</td>
 		  <td>'.$field3name.'</td>
 		  <td>'.$field1name.'</td>
 		  <td>
 		    <form method="post">
-		      <input type="submit" name="Sign up" class="button" value="'.$field1name.'" />
+		      <input type="submit" name="'.$field1name.'" class="button" value="'.$field1name.'" />
                     </form>
 		  </td>
 		</tr>';
 	}
       }
       $result->free();
+
     }
-      ?>
+    ?>
     </tbody>
   </table>
 
