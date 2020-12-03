@@ -35,7 +35,7 @@
   </nav>
 
 
-  <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>! Welcome to our site.</h1>
+  <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>!a Welcome to our site.</h1>
   <a href="welcome-doctor.php" class="btn btn-success">Home</a>
 
   <table class="table table-striped">
@@ -59,17 +59,17 @@
       while ($row = $result->fetch_assoc()) {
         $doctor = $row["doctor"];
 	  echo '<tr>	
+		    <form action="request-appointment-sql.php" method="post">
 		  <td>'.$doctor.'</td>
+		  <input type="hidden" name="doctor" value="'.$doctor.'">
+		  <input type="hidden" name="user" value="'.$user.'">
 		  <td>
-		    <form method="post">
-		      <input id="'.$doctor.'" type="datetime-local" name="'.$doctor.'"/>
-		    </form>
+		      <input type="datetime-local" name="date" value="2018-06-12T19:30"/>
 		  </td>
 		  <td>	
-	            <form method="post">
-		      <input type="submit" name="Resquest" class="button" value="'.$doctor.'" />
-		    </form>
-                  </td>
+		      <input type="submit" name="Request" class="button" value="Request!"/>
+		  </td>
+                 </form>
 		</tr>';
 	//echo '<script>
 	//echo '<script>console.log(document.getElementById("'.$doctor'").value);</script>';
