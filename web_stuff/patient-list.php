@@ -80,7 +80,7 @@
 	  if (isset($_POST["$field1name"])) {
 		  
             // sql stuff for doctor_client table
-	    $sql2 = "INSERT IGNORE INTO doctor_client VALUES(\"$user\", \"$field1name\");";
+	    $sql2 = "INSERT IGNORE INTO doctor_client (doctor, patient) VALUES (\"$user\", \"$field1name\");";
 	    if ($result2 = $conn->query($sql2)) {
 	      // disable button	    
               echo '<tr>	

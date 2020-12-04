@@ -35,8 +35,8 @@
   </nav>
 
 
-  <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>!a Welcome to our site.</h1>
-  <a href="welcome-doctor.php" class="btn btn-success">Home</a>
+  <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>! Welcome to our site.</h1>
+  <a href="welcome.php" class="btn btn-success">Home</a>
 
   <table class="table table-striped">
     <thead>
@@ -49,13 +49,14 @@
     <tbody>
       <?php 
 
-    // Get list of registered patients already
     $user = $_SESSION["username"];
     $sql = "SELECT doctor FROM doctor_client WHERE patient=\"$user\";";
-    $already_registered = [];
-    
+    if (isset($_POST["status"])) {
+      echo '<script>alert("'.$_POST["status"].'");</script>';
+    } 
+
+
     if ($result = $conn->query($sql)) {
-      print_r($_POST);
       while ($row = $result->fetch_assoc()) {
         $doctor = $row["doctor"];
 	  echo '<tr>	
@@ -71,58 +72,10 @@
 		  </td>
                  </form>
 		</tr>';
-	//echo '<script>
-	//echo '<script>console.log(document.getElementById("'.$doctor'").value);</script>';
 	
       }
       $result->free();
     }
-/*
-    $query = "SELECT * FROM patients;";
-
-    if ($result = $conn->query($query)) {
-      while ($row = $result->fetch_assoc()) {
-	  echo '<tr>	
-		  <td>'.$field2name.'</td>
-		  <td>'.$field3name.'</td>
-		  <td>'.$field1name.'</td>
-		  <td>Already signed up!</td>
-	      </tr>';
-	} else {
-	  if (isset($_POST["$field1name"])) {
-		  
-            // sql stuff for doctor_client table
-	    $sql2 = "INSERT IGNORE INTO doctor_client VALUES(\"$user\", \"$field1name\");";
-	    if ($result2 = $conn->query($sql2)) {
-	      // disable button	    
-              echo '<tr>	
-		  <td>'.$field2name.'</td>
-		  <td>'.$field3name.'</td>
-		  <td>'.$field1name.'</td>
-		  <td>Already signed up!</td>
-		  </tr>';
-	      header("Location: https://virtualcheckup.walbers.com/patient-list.php");
-	      die();
-	    } else {
-	      echo "oh no";
-	    }
-	  }
-	  
-	  echo '<tr>	
-		  <td>'.$field2name.'</td>
-		  <td>'.$field3name.'</td>
-		  <td>'.$field1name.'</td>
-		  <td>
-		    <form method="post">
-		      <input type="submit" name="'.$field1name.'" class="button" value="'.$field1name.'" />
-                    </form>
-		  </td>
-		</tr>';
-	}
-      }
-      $result->free();
- */
-   // }
     ?>
     </tbody>
   </table>

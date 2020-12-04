@@ -1,7 +1,8 @@
 <?php
 // Initialize the session
 session_start();
- 
+require_once "config.php";
+
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
@@ -55,5 +56,61 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
         <a href="request-appointment.php" class="btn btn-success">Request Appointment</a>
     </p>
+    <h2>Appointments</h2>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>patient</th>
+        <th>date</th>
+        <th>details</th>
+        <th>status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+    
+    // Get list of registered patients already
+    $user = $_SESSION["username"];
+
+    $query = "SELECT * FROM meetings WHERE patient=\"$user\";";
+    if ($result = $conn->query($query)) {
+      while ($row = $result->fetch_assoc()) {
+        $id = $row["id"];
+        $doctor = $row["doctor"];
+        $meeting_date = $row["meeting_date"];
+        $meeting_status = $row["meeting_status"];
+        $details = $row["details"];
+        if ($meeting_status == 0) {
+          echo '<tr>
+                 <td>'.$doctor.'</td>  
+                 <td>'.$meeting_date.'</td>  
+                 <td>'.$details.'</td>  
+                 <td>Pending</td>  
+               </tr>';
+        }
+        else if ($meeting_status == 1) {
+          echo '<tr>
+                 <td>'.$doctor.'</td>  
+                 <td>'.$meeting_date.'</td>  
+                 <td>'.$details.'</td>  
+                 <td>Accepted</td>  
+               </tr>';
+        }
+        else {
+          echo '<tr>
+                 <td>'.$doctor.'</td>  
+                 <td>'.$meeting_date.'</td>  
+                 <td>'.$details.'</td>  
+                 <td>Denied</td>  
+               </tr>';
+        }
+      }
+      $result->free();
+    } else {
+      echo "failure";
+    }
+
+    ?>
+
 </body>
 </html>
