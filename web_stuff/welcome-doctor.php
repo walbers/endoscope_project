@@ -51,8 +51,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
     </div>
-    <a href="patient-list.php" class="btn btn-success">Patient List</a>
     <p>
+        <a href="patient-list.php" class="btn btn-success">Patient List</a>
+	<a class="btn btn-info" href="https://blooming-wave-86200.herokuapp.com/">Video Chat</a>
         <a href="reset-password-doctor.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
     </p>
@@ -63,7 +64,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <th>doctor</th>
         <th>date</th>
         <th>details</th>
-        <th>status</th>
+	<th>status</th>
+        <th>video chat room name</th>
       </tr>
     </thead>
     <tbody>
@@ -94,8 +96,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                      <input type="submit" name="response" value="accept">
                      <input type="submit" name="response" value="reject">
                    </form>
-
-                 </td>  
+		 </td>
+                 <td>-</td>
 	       </tr>';  	
 	}
 	else if ($meeting_status == 1) {
@@ -104,6 +106,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	    	 <td>'.$meeting_date.'</td>  
 	    	 <td>'.$details.'</td>  
 	    	 <td>Accepted</td>  
+                 <td>'.$id.'</td>
 	       </tr>';  	
 	}
 	else {
@@ -112,6 +115,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	    	 <td>'.$meeting_date.'</td>  
 	    	 <td>'.$details.'</td>  
 	    	 <td>Denied</td>  
+                 <td>-</td>
 	       </tr>';  		
 	}
       }

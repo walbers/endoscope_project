@@ -54,7 +54,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <p>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-        <a href="request-appointment.php" class="btn btn-success">Request Appointment</a>
+	<a href="request-appointment.php" class="btn btn-success">Request Appointment</a>
+        <a class="btn btn-primary" href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BTHZ&redirect_uri=https%3A%2F%2Fvirtualcheckup.walbers.com%2Fcallback.php&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800">
+          Fitbit Dashboard
+	</a>
+        <a class="btn btn-dark" href="https://blooming-wave-86200.herokuapp.com/">Video Chat</a> 
     </p>
     <h2>Appointments</h2>
     <table class="table table-striped">
@@ -63,7 +67,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <th>patient</th>
         <th>date</th>
         <th>details</th>
-        <th>status</th>
+	<th>status</th>
+        <th>video chat room name</th>
       </tr>
     </thead>
     <tbody>
@@ -85,7 +90,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                  <td>'.$doctor.'</td>  
                  <td>'.$meeting_date.'</td>  
                  <td>'.$details.'</td>  
-                 <td>Pending</td>  
+		 <td>Pending</td>  
+                 <td>-</td>
                </tr>';
         }
         else if ($meeting_status == 1) {
@@ -94,6 +100,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                  <td>'.$meeting_date.'</td>  
                  <td>'.$details.'</td>  
                  <td>Accepted</td>  
+                 <td>'.$id.'</td>
                </tr>';
         }
         else {
@@ -102,6 +109,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                  <td>'.$meeting_date.'</td>  
                  <td>'.$details.'</td>  
                  <td>Denied</td>  
+                 <td>-</td>
                </tr>';
         }
       }

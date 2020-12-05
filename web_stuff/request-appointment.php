@@ -56,21 +56,22 @@
     } 
 
 
+    $date = date("Y-m-d h:i"); 
     if ($result = $conn->query($sql)) {
       while ($row = $result->fetch_assoc()) {
-        $doctor = $row["doctor"];
-	  echo '<tr>	
-		    <form action="request-appointment-sql.php" method="post">
-		  <td>'.$doctor.'</td>
-		  <input type="hidden" name="doctor" value="'.$doctor.'">
-		  <input type="hidden" name="user" value="'.$user.'">
-		  <td>
-		      <input type="datetime-local" name="date" value="2018-06-12T19:30"/>
-		  </td>
-		  <td>	
+	$doctor = $row["doctor"];
+	echo '<tr>	
+		  <form action="request-appointment-sql.php" method="post">
+		    <td>'.$doctor.'</td>
+		    <input type="hidden" name="doctor" value="'.$doctor.'">
+		    <input type="hidden" name="user" value="'.$user.'">
+		    <td>
+		      <input type="datetime-local" name="date" value="'.$date.'"/>
+		    </td>
+		    <td>	
 		      <input type="submit" name="Request" class="button" value="Request!"/>
-		  </td>
-                 </form>
+		    </td>
+                  </form>
 		</tr>';
 	
       }
