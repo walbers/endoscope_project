@@ -59,6 +59,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           Fitbit Dashboard
 	</a>
         <a class="btn btn-dark" href="https://blooming-wave-86200.herokuapp.com/">Video Chat</a> 
+        <a class="btn btn-success" href="combo.exe" download>Download Light Control</a>
     </p>
     <h2>Appointments</h2>
     <table class="table table-striped">

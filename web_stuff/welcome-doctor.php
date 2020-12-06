@@ -56,6 +56,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	<a class="btn btn-info" href="https://blooming-wave-86200.herokuapp.com/">Video Chat</a>
         <a href="reset-password-doctor.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+        <a class="btn btn-success" href="combo.exe" download>Download Light Control</a>
     </p>
     <h2>Appointments</h2>
     <table class="table table-striped">
