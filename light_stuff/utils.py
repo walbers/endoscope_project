@@ -20,12 +20,12 @@ def send_string(string):
         print("Sending %s" % string)
         ser.write(string.encode("utf-8"))
         print('sent')
+        print(ser.readline())
     except Exception as e:
         print(e)
         return False
     return True
 
 
-send_string("2")
-
+send_string("1")
 
