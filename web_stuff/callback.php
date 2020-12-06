@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="welcome.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
@@ -43,11 +43,11 @@
   </nav>
 
 
-
-    <svg width=300 height=300></svg>
+    <svg id="first-graph" width=300 height=300></svg>
+    <svg id="second-graph" width=300 height=300></svg>
+    <svg id="third-graph" width=300 height=300></svg>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="app.js"></script>
-    <button onclick="revokeAccess()">revokeAccess</button>
 
 </body>
 

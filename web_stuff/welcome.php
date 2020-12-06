@@ -60,6 +60,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	</a>
         <a class="btn btn-dark" href="https://blooming-wave-86200.herokuapp.com/">Video Chat</a> 
         <a class="btn btn-success" href="combo.exe" download>Download Light Control</a>
+        <a class="btn btn-danger" href="arduino.php">Control Light Brightness</a>
     </p>
     <h2>Appointments</h2>
     <table class="table table-striped">
